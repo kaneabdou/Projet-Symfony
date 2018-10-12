@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{parent()}} - Liste des articles{% endblock %}
+
+{% block body %}
+   <section class="article">
+
+     {% for article in articles %}
+
+     <article>
+     
+  <h2>{{article.title}}</h2>
+  <div class="metadata">Écrit le {{article.createdAt|date('d/m/Y')}} à {{article.createdAt|date('H:i')}} dans catégorie politique</div>
+  <div class="content"><img src="{{article.image}}">
+
+    <p>
+    {{article.content|raw}}
+  </p>
+  </div>
+        <a href="{{path('blog_show',{'id':article.id})}}" class="btn btn-success">Lire la suite</a>
+ </article> 
+ 
+         
+     {% endfor %} 
+
+            
+
+   
+       
+ 	
+   </section>
+{% endblock %}
